@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Last10News
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card>
+	  <img src="{{ item.urlToImage }}"/>
+	  <ion-card-content>
+	    <ion-card-title>
+	      {{ item.title }}
+	    </ion-card-title>
+	   	<ion-list>
+
+	   		<ion-item *ngIf="item.author">
+	   			<ion-icon name="person" item-left></ion-icon>
+	   			{{item.author}}
+	   		</ion-item>
+
+	   		<ion-item *ngIf="item.publishedAt">
+	   			<ion-icon name="alarm" item-left></ion-icon>
+	   			{{item.publishedAt}}
+	   		</ion-item>
+
+	   		<ion-item>
+	   			<ion-icon name="chatboxes" item-left></ion-icon>
+	   			Description:
+	   		</ion-item>
+
+	   		<div>
+	   			<p style="padding-left: 16px;font-size:17px;margin-bottom:20px">{{item.description}}</p>
+	   		</div>
+
+	   		<a ion-button block target="_blank" href="#">For the better: Subscribe to email</a>
+
+	   	</ion-list>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>

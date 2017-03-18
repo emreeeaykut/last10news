@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Last10News
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-list>
+		<ion-item>
+			<ion-label fixed>Channels</ion-label>
+			<ion-select (ionChange)="changeCategory()" [(ngModel)]="category" name="category" >
+				<div *ngFor="let citem of category_items">
+					<ion-option value="{{ citem.id }}">{{ citem.name }} ({{ citem.category }})</ion-option>
+				</div>
+			</ion-select>
+		</ion-item>
+	</ion-list>
+
+	<ion-list>
+		<ion-item *ngFor="let item of items">
+			<ion-thumbnail *ngIf="item.urlToImage" item-left (click)="viewItem(item)" >
+				<img src="{{ item.urlToImage }}">
+			</ion-thumbnail>
+			<h2 (click)="viewItem(item)">{{ item.title }}</h2>
+			<p *ngIf="item.author" (click)="viewItem(item)">
+				<ion-icon name="person"> {{ item.author }}</ion-icon>
+			</p>
+			<p *ngIf="item.publishedAt" (click)="viewItem(item)">
+				<ion-icon name="alarm"> {{ item.publishedAt }}</ion-icon>
+			</p>
+		</ion-item>
+	</ion-list>
+
+</ion-content>
